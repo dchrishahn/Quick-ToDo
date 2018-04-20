@@ -7,15 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		94F70C53F99B98E9CAB44E73 /* Pods_Quick_ToDo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DAC2108A99D3C9023144ED /* Pods_Quick_ToDo.framework */; };
 		B8E6CBA2207EC51B00942EF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6CBA1207EC51B00942EF5 /* AppDelegate.swift */; };
 		B8E6CBA4207EC51B00942EF5 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6CBA3207EC51B00942EF5 /* MasterViewController.swift */; };
 		B8E6CBA6207EC51B00942EF5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6CBA5207EC51B00942EF5 /* DetailViewController.swift */; };
 		B8E6CBA9207EC51B00942EF5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8E6CBA7207EC51B00942EF5 /* Main.storyboard */; };
 		B8E6CBAB207EC51E00942EF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8E6CBAA207EC51E00942EF5 /* Assets.xcassets */; };
 		B8E6CBAE207EC51E00942EF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8E6CBAC207EC51E00942EF5 /* LaunchScreen.storyboard */; };
+		B8E6CBB6207ED6BA00942EF5 /* DataEntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6CBB5207ED6BA00942EF5 /* DataEntryController.swift */; };
+		B8E6CBB8207EE73400942EF5 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6CBB7207EE73400942EF5 /* Data.swift */; };
+		B8E6CBDA207FDAE500942EF5 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6CBD9207FDAE500942EF5 /* List.swift */; };
+		B8E6CBDC207FDB0000942EF5 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6CBDB207FDB0000942EF5 /* Task.swift */; };
+		B8E6CBDE208175A700942EF5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B8E6CBDD208175A700942EF5 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01313A95736D6577E587077F /* Pods-Quick-ToDo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quick-ToDo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Quick-ToDo/Pods-Quick-ToDo.release.xcconfig"; sourceTree = "<group>"; };
+		1178AE4A2FB4E8786DF20B09 /* Pods-Quick-ToDo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quick-ToDo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Quick-ToDo/Pods-Quick-ToDo.debug.xcconfig"; sourceTree = "<group>"; };
+		77DAC2108A99D3C9023144ED /* Pods_Quick_ToDo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Quick_ToDo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8E6CB9E207EC51B00942EF5 /* Quick-ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quick-ToDo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8E6CBA1207EC51B00942EF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8E6CBA3207EC51B00942EF5 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +33,11 @@
 		B8E6CBAA207EC51E00942EF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8E6CBAD207EC51E00942EF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B8E6CBAF207EC51E00942EF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8E6CBB5207ED6BA00942EF5 /* DataEntryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEntryController.swift; sourceTree = "<group>"; };
+		B8E6CBB7207EE73400942EF5 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		B8E6CBD9207FDAE500942EF5 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
+		B8E6CBDB207FDB0000942EF5 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		B8E6CBDD208175A700942EF5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +45,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94F70C53F99B98E9CAB44E73 /* Pods_Quick_ToDo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		102ADD9EF7D00435F3B91F85 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1178AE4A2FB4E8786DF20B09 /* Pods-Quick-ToDo.debug.xcconfig */,
+				01313A95736D6577E587077F /* Pods-Quick-ToDo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		3DCF70153EC62FB74D9547A3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				77DAC2108A99D3C9023144ED /* Pods_Quick_ToDo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B8E6CB95207EC51B00942EF5 = {
 			isa = PBXGroup;
 			children = (
 				B8E6CBA0207EC51B00942EF5 /* Quick-ToDo */,
 				B8E6CB9F207EC51B00942EF5 /* Products */,
+				102ADD9EF7D00435F3B91F85 /* Pods */,
+				3DCF70153EC62FB74D9547A3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,10 +92,15 @@
 			children = (
 				B8E6CBA1207EC51B00942EF5 /* AppDelegate.swift */,
 				B8E6CBA3207EC51B00942EF5 /* MasterViewController.swift */,
+				B8E6CBB5207ED6BA00942EF5 /* DataEntryController.swift */,
+				B8E6CBB7207EE73400942EF5 /* Data.swift */,
+				B8E6CBD9207FDAE500942EF5 /* List.swift */,
+				B8E6CBDB207FDB0000942EF5 /* Task.swift */,
 				B8E6CBA5207EC51B00942EF5 /* DetailViewController.swift */,
 				B8E6CBA7207EC51B00942EF5 /* Main.storyboard */,
 				B8E6CBAA207EC51E00942EF5 /* Assets.xcassets */,
 				B8E6CBAC207EC51E00942EF5 /* LaunchScreen.storyboard */,
+				B8E6CBDD208175A700942EF5 /* GoogleService-Info.plist */,
 				B8E6CBAF207EC51E00942EF5 /* Info.plist */,
 			);
 			path = "Quick-ToDo";
@@ -74,9 +113,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B8E6CBB2207EC51E00942EF5 /* Build configuration list for PBXNativeTarget "Quick-ToDo" */;
 			buildPhases = (
+				370FFD55F4E93509EF2C73BC /* [CP] Check Pods Manifest.lock */,
 				B8E6CB9A207EC51B00942EF5 /* Sources */,
 				B8E6CB9B207EC51B00942EF5 /* Frameworks */,
 				B8E6CB9C207EC51B00942EF5 /* Resources */,
+				81C17F144FE2EF8C58882791 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -126,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8E6CBAE207EC51E00942EF5 /* LaunchScreen.storyboard in Resources */,
+				B8E6CBDE208175A700942EF5 /* GoogleService-Info.plist in Resources */,
 				B8E6CBAB207EC51E00942EF5 /* Assets.xcassets in Resources */,
 				B8E6CBA9207EC51B00942EF5 /* Main.storyboard in Resources */,
 			);
@@ -133,14 +175,63 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		370FFD55F4E93509EF2C73BC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Quick-ToDo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		81C17F144FE2EF8C58882791 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Quick-ToDo/Pods-Quick-ToDo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Quick-ToDo/Pods-Quick-ToDo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B8E6CB9A207EC51B00942EF5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8E6CBB6207ED6BA00942EF5 /* DataEntryController.swift in Sources */,
+				B8E6CBB8207EE73400942EF5 /* Data.swift in Sources */,
 				B8E6CBA6207EC51B00942EF5 /* DetailViewController.swift in Sources */,
 				B8E6CBA4207EC51B00942EF5 /* MasterViewController.swift in Sources */,
 				B8E6CBA2207EC51B00942EF5 /* AppDelegate.swift in Sources */,
+				B8E6CBDC207FDB0000942EF5 /* Task.swift in Sources */,
+				B8E6CBDA207FDAE500942EF5 /* List.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +373,7 @@
 		};
 		B8E6CBB3207EC51E00942EF5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1178AE4A2FB4E8786DF20B09 /* Pods-Quick-ToDo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +392,7 @@
 		};
 		B8E6CBB4207EC51E00942EF5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01313A95736D6577E587077F /* Pods-Quick-ToDo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
