@@ -35,6 +35,7 @@ class DataEntryController: UIViewController, UITableViewDelegate, UIPopoverPrese
     
     var lists = [List]()
     var listTitleValue = ""
+    var sortNum = 0
     
     @IBAction func saveData(_ sender: Any) {
     
@@ -46,15 +47,20 @@ class DataEntryController: UIViewController, UITableViewDelegate, UIPopoverPrese
             
             NSLog("Writing to db ...")
             
+            print("")
+            print("... sortNum before setting value ...")
+            print(sortNum)
             let listsRef = Database.database().reference().child("lists")
             let key = listsRef.childByAutoId().key              // ... gen random keyval for new list
             let listsRefbyKey = listsRef.child(key)             // ... create new child holder based off of previous key
-            let newListVal = ["name":listTitleValue, "id":key]  // ... create val for new child list from entered title and key
+            
+            let newListVal = ["name":listTitleValue, "id":key, "sortVal":sortNum] as [String : Any]  // ... create val for new child list from entered title and key
             
             //listsRef.childByAutoId().setValue(listTitleValue) // ... this results in the key followed by the entered value without
                                                                 // ... the next layer of "name"; so keyvalue: newly entered text
             //listsRef.child(key).setValue(newListVal)
             listsRefbyKey.setValue(newListVal)                  // ... create the new fb entry from previous definition of the newListVal
+            
             
             /*  ... use this for the tasks ??????????????
             let newRef = listsRefbyKey.child(key)
@@ -87,6 +93,12 @@ class DataEntryController: UIViewController, UITableViewDelegate, UIPopoverPrese
             */
             
             ClearText()
+            sortNum = sortNum + 1
+            
+            print("")
+            print("... sortNum after adding one ...")
+            print(sortNum)
+            
      
         } else {
      
@@ -106,6 +118,9 @@ class DataEntryController: UIViewController, UITableViewDelegate, UIPopoverPrese
     
     func ClearText() {
         listTitleInputField.text = ""
+        //if let delegate = delegate {
+        //    delegate.didAddNewData()
+        //}
     }
     
     override func viewDidLoad() {

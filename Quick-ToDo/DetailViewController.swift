@@ -21,12 +21,12 @@ class DetailViewController: UITableViewController {
     var list: List?
     var tasks: [Task] = []
     var taskArray: [String] = []
+    var sortNum = 0
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.refreshControl?.addTarget(self, action: #selector(DetailViewController.handleRefresh(_:)), for: UIControlEvents.valueChanged)
-        
     }
     
     override func viewDidLoad() {
@@ -41,7 +41,11 @@ class DetailViewController: UITableViewController {
         
         self.navigationItem.rightBarButtonItem = self.editButtonItem
         
+        // show detail data on iPad in either portrait or landscape mode
         self.splitViewController?.preferredDisplayMode = UISplitViewControllerDisplayMode.allVisible
+        
+        // clear empty cells at bottom of tableview
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
         
         if let detailList = self.list{
             navigationItem.title = detailList.name
@@ -55,6 +59,16 @@ class DetailViewController: UITableViewController {
             fetchTasks()
             } else {
             }
+        
+        tableView.allowsSelectionDuringEditing = true         // ... to allow the selection of a cell, even in edit mode
+    
+    }
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        //self.tasks.removeAll()
+        //fetchTasks()
+        self.tableView.reloadData()
+        refreshControl.endRefreshing()
     }
     
     // Add task descriptions via UIAlertController ...
@@ -83,17 +97,50 @@ class DetailViewController: UITableViewController {
     
     func createTask(title: String) {                            // called from newTaskButton
         
-        let parentId = self.list?.id
-        let taskRef = Database.database().reference().child("lists").child(parentId!).child("tasks")
+        if !title.isEmpty {
         
-        let taskKey = taskRef.childByAutoId().key
-        let taskRefbyKey = taskRef.child(taskKey)
-        let newTaskVal = ["taskName": title, "tid":taskKey]
-        taskRefbyKey.setValue(newTaskVal)
+            let parentId = self.list?.id
+        
+            let taskRef = Database.database().reference().child("lists").child(parentId!).child("tasks")
+            let taskKey = taskRef.childByAutoId().key
+            let taskRefbyKey = taskRef.child(taskKey)
+        
+            let newTaskVal = ["taskName": title, "tid":taskKey, "tSortVal":sortNum] as [String : Any]
+            taskRefbyKey.setValue(newTaskVal)
+        
+            updateTsortVals()
  
-        self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        } else {
+            showTextMessage()
+        }
     }
 
+    func updateTsortVals() {
+        var i = 0
+        for taskObj in tasks {
+            taskObj.tSortVal = i
+            i = i + 1
+        }
+        let parentId = self.list?.id
+        let ref = Database.database().reference().child("lists").child(parentId!)
+        for taskObj in tasks {
+            let key = taskObj.key
+            let tSortVal = String(taskObj.tSortVal!)
+            ref.child("tasks").child(key!).updateChildValues(["tSortVal": tSortVal])
+        }
+    }
+    
+    func showTextMessage() {
+        let alertController = UIAlertController(title: "Data required", message: "Save button not allowed with blank data. Tap new task again and insure data is entered before tapping save.", preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Close", style: .cancel)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+        
+    }
+    
     // MARK: - Table View settings ...
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -109,7 +156,38 @@ class DetailViewController: UITableViewController {
         return cell
     }
     
+    // Override to support rearranging the table view.  in previous versions was moveRowAtIndexPath
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destIndexPath: IndexPath) {
+        let taskObj = tasks[sourceIndexPath.row]
+        tasks.remove(at: sourceIndexPath.row)
+        tasks.insert(taskObj, at: destIndexPath.row)
+        
+        var i = 0
+        for taskObj in tasks {
+            taskObj.tSortVal = i
+            i = i + 1
+        }
+        
+        rearrangeFBTasks()
+    }
+    
+    func rearrangeFBTasks() {
+        let parentId = self.list?.id
+        let ref = Database.database().reference().child("lists").child(parentId!)
+        for taskObj in tasks {
+            let key = taskObj.key
+            let tSortVal = String(taskObj.tSortVal!)
+            ref.child("tasks").child(key!).updateChildValues(["tSortVal": tSortVal])
+        }
+    }
+    
+    // Override to support conditional rearranging of the table view.  in previous versions was canMoveRowAtIndexPath
+    override func tableView(_ tableview: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        updateTsortVals()
         return true
     }
     
@@ -132,7 +210,9 @@ class DetailViewController: UITableViewController {
     }
     
     func getAllKeys() {
-        taskRef.observeSingleEvent(of: .value, with: { (snapshot) in
+        let parentId = self.list?.id
+        let tSortVal = Database.database().reference().child("lists").child(parentId!).child("tasks").queryOrdered(byChild: "tSortVal")
+        tSortVal.observeSingleEvent(of: .value, with: { (snapshot) in
             for child in snapshot.children {
                 let snap = child as! DataSnapshot
                 let key = snap.key
@@ -151,25 +231,6 @@ class DetailViewController: UITableViewController {
         }
     }
     
-    // Override to support rearranging the table view.  in previous versions was moveRowAtIndexPath
-    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destIndexPath: IndexPath) {
-        
-        let taskObj = tasks[sourceIndexPath.row]
-        tasks.remove(at: sourceIndexPath.row)
-        tasks.insert(taskObj, at: destIndexPath.row)
-    }
-    
-    // Override to support conditional rearranging of the table view.  in previous versions was canMoveRowAtIndexPath
-    override func tableView(_ tableview: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-        //fetchTasks()
-        self.tableView.reloadData()
-        refreshControl.endRefreshing()
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -178,12 +239,13 @@ class DetailViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
      
         let task = tasks[indexPath.row]
-        let alertController = UIAlertController(title:task.taskName, message:"Give new value to update list", preferredStyle:.alert)
+        let alertController = UIAlertController(title:task.taskName, message:"Give new value to update task", preferredStyle:.alert)
     
         let updateAction = UIAlertAction(title: "Update", style:.default){(_) in
-            let tid = task.tid
+            let key = task.key
             let taskName = alertController.textFields?[0].text
-            self.updateTask(tid: tid!, taskName: taskName!)
+            self.updateTask(key: key!, taskName: taskName!)
+            
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -200,15 +262,17 @@ class DetailViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
-    func updateTask(tid: String, taskName: String) {            // updateTask called from didSelectRowAt popup
-        let task = ["tid": tid, "taskName": taskName]
-        taskRef.child(tid).setValue(task)
-        self.tasks.removeAll()
-        fetchTasks()
-        self.tableView.reloadData()
+
+    func updateTask(key: String, taskName: String) {
+        taskRef.child(key).updateChildValues(["taskName": taskName])
         
-        //labelMessage.text = "Task updated"    // ?? labelMessage not current or active??
+        updateTsortVals()
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
         }
+        
+    }
     
 } // End of main class ........
 
@@ -218,21 +282,53 @@ class DetailViewController: UITableViewController {
 extension DetailViewController {
     func fetchTasks() {
         let parentId = self.list?.id
-        let taskRef = Database.database().reference().child("lists").child(parentId!).child("tasks")
-        taskRef.observe(.childAdded, with: { (DataSnapshot) in
-        //listsRef.child("tasks").observe(.childAdded, with: { (DataSnapshot) in
- 
+        let tSortValRef = Database.database().reference().child("lists").child(parentId!).child("tasks").queryOrdered(byChild: "tSortVal")     // ... sort by tSortVal
+        tSortValRef.observe(.childAdded, with: { (DataSnapshot) in                                                                             // ... sort by tSortVal
             
             if let dataValues = DataSnapshot.value as? [String: AnyObject] {
+                let key = DataSnapshot.key
                 let task = Task()
  
                 task.tid = (dataValues["tid"] as? String)
                 task.taskName = (dataValues["taskName"] as? String)
- 
+                task.tSortVal = (dataValues["tSortVal"] as? Int)
+                task.key = key
+                
                 self.tasks.append(task)
-                self.tableView.reloadData()
+                //self.tableView.reloadData()
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
                 }
+            }
+            self.tableView.reloadData()
         })
     }
 }
 
+/*
+extension MasterViewController {
+    func fetchLists() {
+        let sortValRef = ref.child("lists").queryOrdered(byChild: "sortVal")  // ... for sort change
+        sortValRef.observe(.childAdded, with: { (DataSnapshot) in             // ... for sort change
+
+            if let dataValues = DataSnapshot.value as? [String: AnyObject] {
+                let key = DataSnapshot.key
+                let list = List()
+ 
+                list.id = (dataValues["id"] as? String)
+                list.name = (dataValues["name"] as? String)
+                list.sortVal = (dataValues["sortVal"] as? Int)
+                list.key = key
+ 
+                self.lists.append(list)
+ 
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        })
+    }
+ }
+ 
+*/

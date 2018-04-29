@@ -9,28 +9,9 @@
 import UIKit
 import Firebase
 
-
 class Task {
-//class Task: NSObject {
     var taskName: String?
     var tid: String?
-    
-    //init(name: String) {
-    
-        //self.name = name
-    
-    //}
+    var tSortVal: Int?
+    var key : String?
 }
-
-
-// For Firebase ... ???
-/*
-class Task: NSObject {
-    var taskName: String?
-    
-    init(taskName: String) {
-        self.taskName = taskName
-    }
-    
-}
-*/
