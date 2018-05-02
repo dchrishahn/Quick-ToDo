@@ -337,6 +337,16 @@ extension MasterViewController {
 }
 
 extension MasterViewController {
+    func formattedDate() -> String {
+        let date = NSDate()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-mm-dd"
+        dateFormatter.dateStyle = .short
+        return dateFormatter.string(from: date as Date)
+    }
+}
+
+extension MasterViewController {
     func fetchListsByName() {
         let nameSort = ref.child("lists").queryOrdered(byChild: "name")     // ... added for name sorting
         nameSort.observe(.childAdded, with: { (DataSnapshot) in             // ... changed for name sorting

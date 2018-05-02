@@ -80,9 +80,18 @@ class DetailViewController: UITableViewController {
         alertController.addTextField(configurationHandler: {(_ textField: UITextField) -> Void in
             textField.placeholder = "enter task description"
         })
+        /*
         alertController.addTextField(configurationHandler: {(_ dateField: UITextField) -> Void in
-            dateField.placeholder = "enter due date"
+            //dateField.placeholder = "enter due date, format m/d/yy"
+            dateField.placeholder = self.formattedDate()
         })
+        */
+        
+        alertController.addTextField{(textField) in
+            //textField.text = task.taskDate
+            textField.text = self.formattedDate()           //prepopulate date entry field with today's date
+        }
+        
         
         let confirmAction = UIAlertAction(title: "Save", style: .default, handler: {(_ action: UIAlertAction) -> Void in
             /*
@@ -143,7 +152,7 @@ class DetailViewController: UITableViewController {
     }
     
     func showTextMessage() {
-        let alertController = UIAlertController(title: "Data required", message: "Save button not allowed with blank data. Tap new task again and insure data is entered before tapping save.", preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: "Data required", message: "Save button not allowed with blank task description data. Tap new task again and insure task description data is entered before tapping save.", preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction(title: "Close", style: .cancel)
         alertController.addAction(cancelAction)
         present(alertController, animated: true, completion: nil)
@@ -254,7 +263,9 @@ class DetailViewController: UITableViewController {
         let updateAction = UIAlertAction(title: "Update", style:.default){(_) in
             let key = task.key
             let taskName = alertController.textFields?[0].text
-            self.updateTask(key: key!, taskName: taskName!)
+            let taskDate = alertController.textFields?[1].text
+            
+            self.updateTask(key: key!, taskName: taskName!, taskDate: taskDate!)
             
         }
         
@@ -262,6 +273,11 @@ class DetailViewController: UITableViewController {
         
         alertController.addTextField{(textField) in
             textField.text = task.taskName
+        }
+        
+        alertController.addTextField{(textField) in
+            textField.text = task.taskDate
+            //textField.text = self.formattedDate()
         }
      
         alertController.addAction(updateAction)
@@ -273,8 +289,8 @@ class DetailViewController: UITableViewController {
     }
     
 
-    func updateTask(key: String, taskName: String) {
-        taskRef.child(key).updateChildValues(["taskName": taskName])
+    func updateTask(key: String, taskName: String, taskDate: String) {
+        taskRef.child(key).updateChildValues(["taskName": taskName, "taskDate": taskDate])
         
         updateTsortVals()
         
@@ -314,6 +330,16 @@ extension DetailViewController {
             }
             self.tableView.reloadData()
         })
+    }
+}
+
+extension DetailViewController {
+    func formattedDate() -> String {
+        let date = NSDate()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-mm-dd"
+        dateFormatter.dateStyle = .short
+        return dateFormatter.string(from: date as Date)
     }
 }
 

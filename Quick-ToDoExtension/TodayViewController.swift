@@ -36,6 +36,10 @@ class TodayViewController: UITableViewController, NCWidgetProviding {
         
         fetchLists()
         
+        let whatisToday = self.formattedDate()
+        print("...what is the formatted date before the task sortval statement ....")
+        print(whatisToday)
+        
         tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
     
@@ -118,7 +122,9 @@ extension TodayViewController {
                 }
                 
                 let pKey = list.key
-                let tSortValRef = Database.database().reference().child("lists").child(pKey!).child("tasks").queryOrdered(byChild: "tSortVal")
+                let todayDate = self.formattedDate()
+                //let tSortValRef = Database.database().reference().child("lists").child(pKey!).child("tasks").queryOrdered(byChild: "tSortVal")
+                let tSortValRef = Database.database().reference().child("lists").child(pKey!).child("tasks").queryOrdered(byChild: "taskDate").queryEqual(toValue: todayDate)
                 tSortValRef.observe(.childAdded, with: { (DataSnapshot) in
                     if let dataValues = DataSnapshot.value as? [String: AnyObject] {
                         let tkey = DataSnapshot.key
@@ -145,5 +151,15 @@ extension TodayViewController {
             //self.tableView.reloadData()
             //}
         })
+    }
+}
+
+extension TodayViewController {
+    func formattedDate() -> String {
+        let date = NSDate()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-mm-dd"
+        dateFormatter.dateStyle = .short
+        return dateFormatter.string(from: date as Date)
     }
 }
