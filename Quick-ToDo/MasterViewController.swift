@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 import Firebase
 
-class MasterViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
+class MasterViewController: UITableViewController {
     
     // ... Firebase ...
     private var databaseHandle: DatabaseHandle!
@@ -87,22 +87,7 @@ class MasterViewController: UITableViewController, UIPopoverPresentationControll
         
         present(alertController, animated: true, completion: nil)
         
-        /*
-        // previous popover method ...
-        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "DataEntryController") as! UINavigationController
         
-        let dataEntryController = viewController.viewControllers.last as! DataEntryController
-        dataEntryController.delegate = self
-        
-        viewController.modalPresentationStyle = .popover
-        let popover: UIPopoverPresentationController = viewController.popoverPresentationController!
-        
-        popover.barButtonItem = sender
-        popover.delegate = self
-        
-        present(viewController, animated: true, completion:nil)
-        */
     }
     
     func createList(title: String) {                            // called from newListButton
@@ -137,7 +122,6 @@ class MasterViewController: UITableViewController, UIPopoverPresentationControll
             let key = listObj.key
             let sortVal = String(listObj.sortVal!)
             ref.child("lists").child(key!).updateChildValues(["sortVal": sortVal])
-            print("..... MasterVC, updateSortVals executed ............")
         }
     }
     
@@ -183,7 +167,7 @@ class MasterViewController: UITableViewController, UIPopoverPresentationControll
     // Override to support rearranging the table view. just tapping on the move bars in the view does this entire
     // moveRowAt which also calls the rearrangeFBLists and does an updateChildValues in Firebase
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-        print("..... MasterVC,  moveRowAt, initiated  ............")
+        
         let listObj = lists[fromIndexPath.row]
         lists.remove(at: fromIndexPath.row)
         lists.insert(listObj, at: to.row)
@@ -209,20 +193,21 @@ class MasterViewController: UITableViewController, UIPopoverPresentationControll
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
-        print("..... MasterVC, canMoveRowAt, initiated ............")
+        
         return true
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
+        
         updateSortVals()
-        print("..... MasterVC, canEditRowAt, initiated ............")
+        
         return true
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-        print("..... MasterVC, editingStyle, initiated ............")
+        
             getAllKeys()
             let when = DispatchTime.now() + 1
             DispatchQueue.main.asyncAfter(deadline: when, execute: {
@@ -238,7 +223,7 @@ class MasterViewController: UITableViewController, UIPopoverPresentationControll
     }
     
     func getAllKeys() {
-        print("..... MasterVC, getAllKeys, initiated ............")
+        
         let sortValRef = ref.child("lists").queryOrdered(byChild: "sortVal")  //...get keys by sortVal
         sortValRef.observeSingleEvent(of: .value, with: { (snapshot) in       //...get keys by sortVal
             for child in snapshot.children {
@@ -313,11 +298,12 @@ class MasterViewController: UITableViewController, UIPopoverPresentationControll
 }   // end of main class ................
 
 // Extensions ...
-
+/*
 extension MasterViewController: DataEntryControllerDelegate {
     func didAddNewData() {
     }
 }
+*/
 
 extension MasterViewController {
     func fetchLists() {

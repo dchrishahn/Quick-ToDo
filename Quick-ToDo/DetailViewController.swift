@@ -60,7 +60,8 @@ class DetailViewController: UITableViewController {
             } else {
             }
         
-        tableView.allowsSelectionDuringEditing = true         // ... to allow the selection of a cell, even in edit mode
+        //to allow the selection of a cell, even in edit mode
+        tableView.allowsSelectionDuringEditing = true
     
     }
     
@@ -79,11 +80,19 @@ class DetailViewController: UITableViewController {
         alertController.addTextField(configurationHandler: {(_ textField: UITextField) -> Void in
             textField.placeholder = "enter task description"
         })
+        alertController.addTextField(configurationHandler: {(_ dateField: UITextField) -> Void in
+            dateField.placeholder = "enter due date"
+        })
         
         let confirmAction = UIAlertAction(title: "Save", style: .default, handler: {(_ action: UIAlertAction) -> Void in
+            /*
             if let taskName = alertController.textFields?[0].text {
                 self.createTask(title: taskName)
             }
+            */
+            let taskName = alertController.textFields?[0].text
+            let taskDate = alertController.textFields?[1].text
+            self.createTask(title: taskName!, subtitle: taskDate!)
         })
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -95,7 +104,7 @@ class DetailViewController: UITableViewController {
         
     }
     
-    func createTask(title: String) {                            // called from newTaskButton
+    func createTask(title: String, subtitle: String) {                            // called from newTaskButton
         
         if !title.isEmpty {
         
@@ -105,7 +114,7 @@ class DetailViewController: UITableViewController {
             let taskKey = taskRef.childByAutoId().key
             let taskRefbyKey = taskRef.child(taskKey)
         
-            let newTaskVal = ["taskName": title, "tid":taskKey, "tSortVal":sortNum] as [String : Any]
+            let newTaskVal = ["taskName": title, "taskDate": subtitle, "tid":taskKey, "tSortVal":sortNum] as [String : Any]
             taskRefbyKey.setValue(newTaskVal)
         
             updateTsortVals()
@@ -152,6 +161,7 @@ class DetailViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellTwo", for: indexPath)
         let task = tasks[indexPath.row]
         cell.textLabel?.text = task.taskName
+        cell.detailTextLabel?.text = task.taskDate
         
         return cell
     }
@@ -290,6 +300,7 @@ extension DetailViewController {
                 let task = Task()
  
                 task.tid = (dataValues["tid"] as? String)
+                task.taskDate = (dataValues["taskDate"] as? String)
                 task.taskName = (dataValues["taskName"] as? String)
                 task.tSortVal = (dataValues["tSortVal"] as? Int)
                 task.key = key

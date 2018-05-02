@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		94F70C53F99B98E9CAB44E73 /* Pods_Quick_ToDo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DAC2108A99D3C9023144ED /* Pods_Quick_ToDo.framework */; };
+		B8609C20209921E000591DAF /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8609C1F209921E000591DAF /* NotificationCenter.framework */; };
+		B8609C23209921E000591DAF /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8609C22209921E000591DAF /* TodayViewController.swift */; };
+		B8609C26209921E000591DAF /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8609C24209921E000591DAF /* MainInterface.storyboard */; };
+		B8609C2A209921E000591DAF /* Quick-ToDoExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B8609C1E209921E000591DAF /* Quick-ToDoExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B8609C322099257800591DAF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B8609C312099257800591DAF /* GoogleService-Info.plist */; };
+		B8609C332099261000591DAF /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6CBDB207FDB0000942EF5 /* Task.swift */; };
+		B8609C342099261B00591DAF /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6CBD9207FDAE500942EF5 /* List.swift */; };
 		B8E6CBA2207EC51B00942EF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6CBA1207EC51B00942EF5 /* AppDelegate.swift */; };
 		B8E6CBA4207EC51B00942EF5 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6CBA3207EC51B00942EF5 /* MasterViewController.swift */; };
 		B8E6CBA6207EC51B00942EF5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6CBA5207EC51B00942EF5 /* DetailViewController.swift */; };
@@ -19,12 +26,47 @@
 		B8E6CBDA207FDAE500942EF5 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6CBD9207FDAE500942EF5 /* List.swift */; };
 		B8E6CBDC207FDB0000942EF5 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6CBDB207FDB0000942EF5 /* Task.swift */; };
 		B8E6CBDE208175A700942EF5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B8E6CBDD208175A700942EF5 /* GoogleService-Info.plist */; };
+		B906164A69876FCE5803C848 /* Pods_Quick_ToDoExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D7B8B8F70113A86CBE11F6A /* Pods_Quick_ToDoExtension.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B8609C28209921E000591DAF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B8E6CB96207EC51B00942EF5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8609C1D209921E000591DAF;
+			remoteInfo = "Quick-ToDoExtension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B8609C2E209921E000591DAF /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B8609C2A209921E000591DAF /* Quick-ToDoExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		01313A95736D6577E587077F /* Pods-Quick-ToDo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quick-ToDo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Quick-ToDo/Pods-Quick-ToDo.release.xcconfig"; sourceTree = "<group>"; };
 		1178AE4A2FB4E8786DF20B09 /* Pods-Quick-ToDo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quick-ToDo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Quick-ToDo/Pods-Quick-ToDo.debug.xcconfig"; sourceTree = "<group>"; };
+		3D7B8B8F70113A86CBE11F6A /* Pods_Quick_ToDoExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Quick_ToDoExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FBCDE28666AD7931C14C334 /* Pods-Quick-ToDoExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quick-ToDoExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Quick-ToDoExtension/Pods-Quick-ToDoExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		77DAC2108A99D3C9023144ED /* Pods_Quick_ToDo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Quick_ToDo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8609C1E209921E000591DAF /* Quick-ToDoExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Quick-ToDoExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8609C1F209921E000591DAF /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		B8609C22209921E000591DAF /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		B8609C25209921E000591DAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		B8609C27209921E000591DAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8609C2F2099222900591DAF /* Quick-ToDoExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Quick-ToDoExtension.entitlements"; sourceTree = "<group>"; };
+		B8609C302099225700591DAF /* Quick-ToDo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Quick-ToDo.entitlements"; sourceTree = "<group>"; };
+		B8609C312099257800591DAF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B8E6CB9E207EC51B00942EF5 /* Quick-ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quick-ToDo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8E6CBA1207EC51B00942EF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8E6CBA3207EC51B00942EF5 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -38,9 +80,19 @@
 		B8E6CBD9207FDAE500942EF5 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		B8E6CBDB207FDB0000942EF5 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		B8E6CBDD208175A700942EF5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F3553A1D1A6CF6EA1B249489 /* Pods-Quick-ToDoExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quick-ToDoExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-Quick-ToDoExtension/Pods-Quick-ToDoExtension.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B8609C1B209921E000591DAF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8609C20209921E000591DAF /* NotificationCenter.framework in Frameworks */,
+				B906164A69876FCE5803C848 /* Pods_Quick_ToDoExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B8E6CB9B207EC51B00942EF5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -57,6 +109,8 @@
 			children = (
 				1178AE4A2FB4E8786DF20B09 /* Pods-Quick-ToDo.debug.xcconfig */,
 				01313A95736D6577E587077F /* Pods-Quick-ToDo.release.xcconfig */,
+				6FBCDE28666AD7931C14C334 /* Pods-Quick-ToDoExtension.debug.xcconfig */,
+				F3553A1D1A6CF6EA1B249489 /* Pods-Quick-ToDoExtension.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -65,14 +119,29 @@
 			isa = PBXGroup;
 			children = (
 				77DAC2108A99D3C9023144ED /* Pods_Quick_ToDo.framework */,
+				B8609C1F209921E000591DAF /* NotificationCenter.framework */,
+				3D7B8B8F70113A86CBE11F6A /* Pods_Quick_ToDoExtension.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B8609C21209921E000591DAF /* Quick-ToDoExtension */ = {
+			isa = PBXGroup;
+			children = (
+				B8609C2F2099222900591DAF /* Quick-ToDoExtension.entitlements */,
+				B8609C22209921E000591DAF /* TodayViewController.swift */,
+				B8609C24209921E000591DAF /* MainInterface.storyboard */,
+				B8609C312099257800591DAF /* GoogleService-Info.plist */,
+				B8609C27209921E000591DAF /* Info.plist */,
+			);
+			path = "Quick-ToDoExtension";
 			sourceTree = "<group>";
 		};
 		B8E6CB95207EC51B00942EF5 = {
 			isa = PBXGroup;
 			children = (
 				B8E6CBA0207EC51B00942EF5 /* Quick-ToDo */,
+				B8609C21209921E000591DAF /* Quick-ToDoExtension */,
 				B8E6CB9F207EC51B00942EF5 /* Products */,
 				102ADD9EF7D00435F3B91F85 /* Pods */,
 				3DCF70153EC62FB74D9547A3 /* Frameworks */,
@@ -83,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				B8E6CB9E207EC51B00942EF5 /* Quick-ToDo.app */,
+				B8609C1E209921E000591DAF /* Quick-ToDoExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -90,6 +160,7 @@
 		B8E6CBA0207EC51B00942EF5 /* Quick-ToDo */ = {
 			isa = PBXGroup;
 			children = (
+				B8609C302099225700591DAF /* Quick-ToDo.entitlements */,
 				B8E6CBA1207EC51B00942EF5 /* AppDelegate.swift */,
 				B8E6CBA3207EC51B00942EF5 /* MasterViewController.swift */,
 				B8E6CBB5207ED6BA00942EF5 /* DataEntryController.swift */,
@@ -109,6 +180,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		B8609C1D209921E000591DAF /* Quick-ToDoExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B8609C2D209921E000591DAF /* Build configuration list for PBXNativeTarget "Quick-ToDoExtension" */;
+			buildPhases = (
+				AD0CD8DC8A5F48A6282E9DC9 /* [CP] Check Pods Manifest.lock */,
+				B8609C1A209921E000591DAF /* Sources */,
+				B8609C1B209921E000591DAF /* Frameworks */,
+				B8609C1C209921E000591DAF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Quick-ToDoExtension";
+			productName = "Quick-ToDoExtension";
+			productReference = B8609C1E209921E000591DAF /* Quick-ToDoExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		B8E6CB9D207EC51B00942EF5 /* Quick-ToDo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B8E6CBB2207EC51E00942EF5 /* Build configuration list for PBXNativeTarget "Quick-ToDo" */;
@@ -118,10 +207,12 @@
 				B8E6CB9B207EC51B00942EF5 /* Frameworks */,
 				B8E6CB9C207EC51B00942EF5 /* Resources */,
 				81C17F144FE2EF8C58882791 /* [CP] Embed Pods Frameworks */,
+				B8609C2E209921E000591DAF /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B8609C29209921E000591DAF /* PBXTargetDependency */,
 			);
 			name = "Quick-ToDo";
 			productName = "Quick-ToDo";
@@ -138,8 +229,21 @@
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Chris Hahn";
 				TargetAttributes = {
+					B8609C1D209921E000591DAF = {
+						CreatedOnToolsVersion = 9.3;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 					B8E6CB9D207EC51B00942EF5 = {
 						CreatedOnToolsVersion = 9.3;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -157,11 +261,21 @@
 			projectRoot = "";
 			targets = (
 				B8E6CB9D207EC51B00942EF5 /* Quick-ToDo */,
+				B8609C1D209921E000591DAF /* Quick-ToDoExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B8609C1C209921E000591DAF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8609C26209921E000591DAF /* MainInterface.storyboard in Resources */,
+				B8609C322099257800591DAF /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B8E6CB9C207EC51B00942EF5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -218,9 +332,37 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Quick-ToDo/Pods-Quick-ToDo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		AD0CD8DC8A5F48A6282E9DC9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Quick-ToDoExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B8609C1A209921E000591DAF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8609C332099261000591DAF /* Task.swift in Sources */,
+				B8609C23209921E000591DAF /* TodayViewController.swift in Sources */,
+				B8609C342099261B00591DAF /* List.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B8E6CB9A207EC51B00942EF5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -237,7 +379,23 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		B8609C29209921E000591DAF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8609C1D209921E000591DAF /* Quick-ToDoExtension */;
+			targetProxy = B8609C28209921E000591DAF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		B8609C24209921E000591DAF /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B8609C25209921E000591DAF /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		B8E6CBA7207EC51B00942EF5 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -257,6 +415,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		B8609C2B209921E000591DAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6FBCDE28666AD7931C14C334 /* Pods-Quick-ToDoExtension.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Quick-ToDoExtension/Quick-ToDoExtension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HYUL7NU4WZ;
+				INFOPLIST_FILE = "Quick-ToDoExtension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sturnella.Quick-ToDo.Quick-ToDoExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B8609C2C209921E000591DAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F3553A1D1A6CF6EA1B249489 /* Pods-Quick-ToDoExtension.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Quick-ToDoExtension/Quick-ToDoExtension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HYUL7NU4WZ;
+				INFOPLIST_FILE = "Quick-ToDoExtension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sturnella.Quick-ToDo.Quick-ToDoExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		B8E6CBB0207EC51E00942EF5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -375,7 +575,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1178AE4A2FB4E8786DF20B09 /* Pods-Quick-ToDo.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Quick-ToDo/Quick-ToDo.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HYUL7NU4WZ;
 				INFOPLIST_FILE = "Quick-ToDo/Info.plist";
@@ -394,7 +596,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 01313A95736D6577E587077F /* Pods-Quick-ToDo.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Quick-ToDo/Quick-ToDo.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HYUL7NU4WZ;
 				INFOPLIST_FILE = "Quick-ToDo/Info.plist";
@@ -412,6 +616,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B8609C2D209921E000591DAF /* Build configuration list for PBXNativeTarget "Quick-ToDoExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B8609C2B209921E000591DAF /* Debug */,
+				B8609C2C209921E000591DAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B8E6CB99207EC51B00942EF5 /* Build configuration list for PBXProject "Quick-ToDo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

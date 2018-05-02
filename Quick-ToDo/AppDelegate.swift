@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         // Override point for customization after application launch.
         
         FirebaseApp.configure()
+        //Firebase persistence temporarily halted
         //Database.database().isPersistenceEnabled = true
         
         let splitViewController = window!.rootViewController as! UISplitViewController

@@ -11,6 +11,7 @@ import Firebase
 
 class Task {
     var taskName: String?
+    var taskDate: String?
     var tid: String?
     var tSortVal: Int?
     var key : String?
